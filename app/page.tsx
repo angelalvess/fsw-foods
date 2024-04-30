@@ -1,5 +1,6 @@
-import Header from "./_components/header";
-import { Search } from "./_components/search";
+import CategoryList from './_components/categoryList'
+import Header from './_components/header'
+import { Search } from './_components/search'
 
 const Home = () => {
   return (
@@ -8,8 +9,10 @@ const Home = () => {
       <div className="px-5 pt-6">
         <Search />
       </div>
-    </>
-  );
-};
 
-export default Home;
+      <CategoryList />
+    </>
+  )
+}
+
+export default Home
