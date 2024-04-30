@@ -1,9 +1,7 @@
+import Header from "./_components/header";
+
 const Home = () => {
-  return (
-    <div className="flex flex-col">
-      <h1>Test huskyy</h1>
-    </div>
-  );
+  return <Header />;
 };
 
 export default Home;
