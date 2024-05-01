@@ -1,17 +1,16 @@
 import React from 'react'
 import { db } from '../_lib/prisma'
+import CategoryItem from './categoryItem'
 
 const CategoryList = async () => {
   const categories = await db.category.findMany({})
 
   return (
-    <>
+    <div className="grid grid-cols-2 gap-3">
       {categories.map((category) => (
-        <div key={category.id}>
-          <h1>{category.name}</h1>
-        </div>
+        <CategoryItem key={category.id} category={category} />
       ))}
-    </>
+    </div>
   )
 }
 

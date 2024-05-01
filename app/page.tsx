@@ -10,7 +10,9 @@ const Home = () => {
         <Search />
       </div>
 
-      <CategoryList />
+      <div className="px-5 pt-6">
+        <CategoryList />
+      </div>
     </>
   )
 }
