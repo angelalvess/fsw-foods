@@ -24,6 +24,7 @@ interface ProductDetailsProps {
       restaurant: true
     }
   }>
+
   complementaryProducts: Prisma.ProductGetPayload<{
     include: {
       restaurant: true
@@ -103,7 +104,7 @@ const ProductDetails = ({
       </div>
 
       <div className="px-5">
-        <Card className="mt-6 flex justify-around  py-3 ">
+        <Card className="items-cente mt-6 flex justify-around py-3 ">
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-1 text-muted-foreground ">
               <span className="text-xs">Entrega</span>
@@ -139,6 +140,10 @@ const ProductDetails = ({
       <div className="mt-6 space-y-3 ">
         <h3 className="px-5 font-semibold">Sucos</h3>
         <ProductList products={complementaryProducts} />
+      </div>
+
+      <div className="mt-6 px-5">
+        <Button className="w-full font-semibold">Adicionar a Sacola</Button>
       </div>
     </div>
   )
