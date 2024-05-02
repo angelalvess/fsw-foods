@@ -37,7 +37,7 @@ const Home = async () => {
         <CategoryList />
       </div>
 
-      <div className="px-5 pt-6">
+      <div className="  pt-6">
         <PromoBanner src="/promo-banner-01.png" alt="Promo banner 1" />
       </div>
 
@@ -54,7 +54,6 @@ const Home = async () => {
             </Button>
           </Link>
         </div>
-
         <ProductList products={products} />
       </div>
 
@@ -65,6 +64,7 @@ const Home = async () => {
       <div className="space-y-4 py-6">
         <div className="flex items-center justify-between px-5">
           <h2 className="text-1xl font-semibold">Restaurantes Recomendados</h2>
+
           <Link href="/restaurants/recomended">
             <Button
               variant="ghost"
