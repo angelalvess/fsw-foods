@@ -6,6 +6,8 @@ import { StarIcon } from 'lucide-react'
 import DeliveryInfo from '@/app/_components/deliveryInfo'
 import ProductList from '@/app/_components/productList'
 
+import CartBanner from './_components/cartBanner'
+
 interface RestaurantPageProps {
   params: {
     id: string
@@ -112,6 +114,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
           <ProductList products={category.products} />
         </div>
       ))}
+      <CartBanner restaurant={restaurant} />
     </div>
   )
 }
