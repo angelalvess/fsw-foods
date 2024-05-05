@@ -2,7 +2,7 @@
 
 import { db } from '@/app/_lib/prisma'
 
-const searchForRestaurants = async (search: string) => {
+export const searchForRestaurants = async (search: string) => {
   const restaurants = await db.restaurant.findMany({
     where: {
       name: {
