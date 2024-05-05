@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from '@/app/_components/ui/card'
 import { OrderStatus, Prisma } from '@prisma/client'
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 
 import { Button } from '@/app/_components/ui/button'
@@ -10,6 +10,8 @@ import { ChevronRightIcon } from 'lucide-react'
 import { Avatar, AvatarImage } from '@/app/_components/ui/avatar'
 import { Separator } from '@/app/_components/ui/separator'
 import { formatCurrency } from '@/app/_helpers/price'
+import { useRouter } from 'next/navigation'
+import { CartContext } from '@/app/_context/cart'
 
 interface OrderItemProps {
   order: Prisma.OrderGetPayload<{
@@ -44,6 +46,24 @@ const getOrderStatusLabel = (status: OrderStatus) => {
 }
 
 const OrderItem = ({ order }: OrderItemProps) => {
+  const { addProductToCart } = useContext(CartContext)
+
+  const router = useRouter()
+
+  const handleRedoOrderClick = () => {
+    for (const orderProduct of order.products) {
+      addProductToCart({
+        product: {
+          ...orderProduct.product,
+          restaurant: order.restaurant,
+        },
+        quantity: orderProduct.quantity,
+      })
+    }
+
+    router.push(`/restaurants/${order.restaurantId}`)
+  }
+
   return (
     <Card>
       <CardContent className="space-y-3 p-5">
@@ -111,6 +131,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
             size="sm"
             className="text-xs text-primary"
             disabled={order.status !== OrderStatus.DELIVERED}
+            onClick={handleRedoOrderClick}
           >
             Refazer pedido
           </Button>
