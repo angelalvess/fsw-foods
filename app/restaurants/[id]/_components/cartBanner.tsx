@@ -1,20 +1,20 @@
-'use client'
+"use client"
 
-import Cart from '@/app/_components/cart'
-import { Button } from '@/app/_components/ui/button'
+import Cart from "@/app/_components/cart"
+import { Button } from "@/app/_components/ui/button"
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
-} from '@/app/_components/ui/sheet'
-import { CartContext } from '@/app/_context/cart'
-import { formatCurrency } from '@/app/_helpers/price'
-import { Restaurant } from '@prisma/client'
-import { useContext, useState } from 'react'
+} from "@/app/_components/ui/sheet"
+import { CartContext } from "@/app/_context/cart"
+import { formatCurrency } from "@/app/_helpers/price"
+import { Restaurant } from "@prisma/client"
+import { useContext, useState } from "react"
 
 interface CartBannerProps {
-  restaurant: Pick<Restaurant, 'id'>
+  restaurant: Pick<Restaurant, "id">
 }
 
 const CartBanner = ({ restaurant }: CartBannerProps) => {
@@ -42,10 +42,10 @@ const CartBanner = ({ restaurant }: CartBannerProps) => {
             Total sem entrega
           </span>
           <h3 className="font-semibold">
-            {formatCurrency(calculateTotalPrice)}{' '}
+            {formatCurrency(calculateTotalPrice)}{" "}
             <span className="text-xs font-normal text-muted-foreground">
-              / {calculateTotalQuantity}{' '}
-              {calculateTotalQuantity > 1 ? 'itens' : 'item'}
+              / {calculateTotalQuantity}{" "}
+              {calculateTotalQuantity > 1 ? "itens" : "item"}
             </span>
           </h3>
         </div>
