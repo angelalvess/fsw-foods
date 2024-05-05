@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Product, Prisma } from '@prisma/client'
-import { ReactNode, createContext, useMemo, useState } from 'react'
-import { calculateProductTotalPrice } from '../_helpers/price'
+import { Product, Prisma } from "@prisma/client"
+import { ReactNode, createContext, useMemo, useState } from "react"
+import { calculateProductTotalPrice } from "../_helpers/price"
 
 export interface CartProduct
   extends Prisma.ProductGetPayload<{
@@ -138,7 +138,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       include: {
         restaurant: {
           select: {
+            id: true
             deliveryFee: true
+            deliveryTimeMinutes: true
           }
         }
       }

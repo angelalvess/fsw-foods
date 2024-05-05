@@ -1,26 +1,31 @@
-'use client'
+"use client"
 
-import Cart from '@/app/_components/cart'
-import { Button } from '@/app/_components/ui/button'
+import Cart from "@/app/_components/cart"
+import { Button } from "@/app/_components/ui/button"
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
-} from '@/app/_components/ui/sheet'
-import { CartContext } from '@/app/_context/cart'
-import { formatCurrency } from '@/app/_helpers/price'
-import { Restaurant } from '@prisma/client'
-import { useContext } from 'react'
+} from "@/app/_components/ui/sheet"
+import { CartContext } from "@/app/_context/cart"
+import { formatCurrency } from "@/app/_helpers/price"
+import { Restaurant } from "@prisma/client"
+import { useContext, useState } from "react"
 
 interface CartBannerProps {
-  restaurant: Pick<Restaurant, 'id'>
+  restaurant: Pick<Restaurant, "id">
 }
 
 const CartBanner = ({ restaurant }: CartBannerProps) => {
-  const { products, calculateTotalPrice, calculateTotalQuantity } =
-    useContext(CartContext)
+  const { products } = useContext(CartContext)
+  const { calculateTotalPrice } = useContext(CartContext)
+  const { calculateTotalQuantity } = useContext(CartContext)
+  const [isCartOpen, setIsCartOpen] = useState(false)
+
+  const handleIsCartOpen = () => {
+    setIsCartOpen(!isCartOpen)
+  }
 
   const restaurantHasProductsOnCart = products.some(
     (product) => product.restaurantId === restaurant.id,
@@ -37,23 +42,22 @@ const CartBanner = ({ restaurant }: CartBannerProps) => {
             Total sem entrega
           </span>
           <h3 className="font-semibold">
-            {formatCurrency(calculateTotalPrice)}{' '}
+            {formatCurrency(calculateTotalPrice)}{" "}
             <span className="text-xs font-normal text-muted-foreground">
-              / {calculateTotalQuantity}{' '}
-              {calculateTotalQuantity > 1 ? 'itens' : 'item'}
+              / {calculateTotalQuantity}{" "}
+              {calculateTotalQuantity > 1 ? "itens" : "item"}
             </span>
           </h3>
         </div>
 
-        <Sheet>
-          <SheetTrigger>
-            <Button>Ver Sacola</Button>
-          </SheetTrigger>
+        <Button onClick={handleIsCartOpen}>Ver Sacola</Button>
+
+        <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
           <SheetContent className="w-[90vw]">
             <SheetHeader>
               <SheetTitle>Sacola</SheetTitle>
             </SheetHeader>
-            <Cart />
+            <Cart setIsOpen={setIsCartOpen} />
           </SheetContent>
         </Sheet>
       </div>
