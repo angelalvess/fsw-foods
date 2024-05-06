@@ -84,6 +84,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
               alt={restaurant.name}
               fill
               className="rounded-full object-cover"
+              sizes="100%"
             />
           </div>
 

@@ -55,6 +55,7 @@ const RestaurantItem = ({
               alt={restaurant.name}
               fill
               className="rounded-lg object-cover shadow-md"
+              sizes="100%"
             />
           </Link>
 

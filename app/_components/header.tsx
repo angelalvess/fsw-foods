@@ -46,6 +46,7 @@ const Header = () => {
             alt="logo FSW Foods"
             fill
             className="object-cover"
+            sizes="100%"
           />
         </div>
       </Link>

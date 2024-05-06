@@ -95,6 +95,7 @@ const ProductDetails = ({
               alt={product.restaurant.name}
               className="rounded-full object-cover"
               fill
+              sizes="100%"
             />
           </div>
 
