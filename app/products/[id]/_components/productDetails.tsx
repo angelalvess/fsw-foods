@@ -54,8 +54,6 @@ const ProductDetails = ({
   const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] =
     useState(false)
 
-  console.log(products)
-
   const addToCart = ({ emptyCart }: { emptyCart?: boolean }) => {
     addProductToCart({ product: { ...product, quantity }, emptyCart })
     setIsCartOpen(true)
