@@ -64,11 +64,11 @@ const RestaurantItem = ({
 
           {userId && (
             <Button
-              onClick={handleFavoriteClick}
               size="icon"
-              className={`absolute right-2 top-2 h-7 w-7 rounded-full bg-gray-700 ${isFavorite && 'bg-primary'} `}
+              className={`absolute right-2 top-2 h-7 w-7 rounded-full bg-gray-700 ${isFavorite && 'bg-primary hover:bg-gray-700'}`}
+              onClick={handleFavoriteClick}
             >
-              <HeartIcon size={12} className="fill-white" />
+              <HeartIcon size={16} className="fill-white" />
             </Button>
           )}
         </div>
