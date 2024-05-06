@@ -9,8 +9,8 @@ import PromoBanner from './_components/promoBanner'
 import RestaurantList from './_components/restaurantList'
 import Link from 'next/link'
 
-const Home = async () => {
-  const products = await db.product.findMany({
+const fetch = async () => {
+  const getProducts = await db.product.findMany({
     where: {
       discountPercentage: {
         gt: 0,
@@ -26,6 +26,30 @@ const Home = async () => {
     },
   })
 
+  const getBurguerCategory = await db.category.findFirst({
+    where: {
+      name: 'Hambúrgueres',
+    },
+  })
+
+  const getPizzaCategory = await db.category.findFirst({
+    where: {
+      name: 'Pizzas',
+    },
+  })
+
+  const [products, burguerCategory, pizzaCategory] = await Promise.all([
+    getProducts,
+    getBurguerCategory,
+    getPizzaCategory,
+  ])
+
+  return { products, burguerCategory, pizzaCategory }
+}
+
+const Home = async () => {
+  const { products, burguerCategory, pizzaCategory } = await fetch()
+
   return (
     <>
       <Header />
@@ -38,7 +62,9 @@ const Home = async () => {
       </div>
 
       <div className="pt-6">
-        <PromoBanner src="/promo-banner-01.png" alt="Promo banner 1" />
+        <Link href={`/categories/${pizzaCategory?.id}/products`}>
+          <PromoBanner src="/promo-banner-01.png" alt="Promo banner 1" />
+        </Link>
       </div>
 
       <div className="space-y-4 pt-6">
@@ -60,7 +86,9 @@ const Home = async () => {
       </div>
 
       <div className="px-6 pt-6">
-        <PromoBanner src="/promo-banner-02.png" alt="Promo banner 2" />
+        <Link href={`/categories/${burguerCategory?.id}/products`}>
+          <PromoBanner src="/promo-banner-02.png" alt="Promo banner 2" />
+        </Link>
       </div>
 
       <div className="space-y-4 py-6">
