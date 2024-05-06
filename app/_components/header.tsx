@@ -56,6 +56,7 @@ const Header = () => {
             size="icon"
             variant="outline"
             className="border-none bg-transparent"
+            asChild
           >
             <MenuIcon />
           </Button>
