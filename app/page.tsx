@@ -37,7 +37,7 @@ const Home = async () => {
         <CategoryList />
       </div>
 
-      <div className="  pt-6">
+      <div className="pt-6">
         <PromoBanner src="/promo-banner-01.png" alt="Promo banner 1" />
       </div>
 
@@ -59,7 +59,7 @@ const Home = async () => {
         <ProductList products={products} />
       </div>
 
-      <div className="px-5 pt-6">
+      <div className="px-6 pt-6">
         <PromoBanner src="/promo-banner-02.png" alt="Promo banner 2" />
       </div>
 
