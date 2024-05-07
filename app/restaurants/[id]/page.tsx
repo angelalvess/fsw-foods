@@ -43,7 +43,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
         },
       },
       products: {
-        take: 10,
+        take: 15,
         include: {
           restaurant: {
             select: {

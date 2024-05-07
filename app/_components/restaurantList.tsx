@@ -7,7 +7,7 @@ const RestaurantList = async () => {
   const session = await getServerSession(authOptions)
 
   const restaurants = await db.restaurant.findMany({
-    take: 10,
+    take: 15,
   })
 
   const userFavoritesRestaurants = await db.userFavoriteRestaurant.findMany({

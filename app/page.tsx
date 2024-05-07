@@ -16,7 +16,7 @@ const fetch = async () => {
         gt: 0,
       },
     },
-    take: 10,
+    take: 15,
     include: {
       restaurant: {
         select: {
