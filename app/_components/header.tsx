@@ -106,9 +106,15 @@ const Header = () => {
           </div>
 
           <div className="space-y-2 ">
-            <Button className=" w-full justify-start space-x-2 rounded-full">
-              <HomeIcon size={16} />
-              <span className="block text-sm font-normal">Início</span>
+            <Button
+              className=" w-full justify-start space-x-2 rounded-full"
+              asChild
+            >
+              <Link href="/">
+                <HomeIcon size={16} />
+
+                <span className="block text-sm font-normal">Início</span>
+              </Link>
             </Button>
             {status === 'authenticated' && (
               <>
