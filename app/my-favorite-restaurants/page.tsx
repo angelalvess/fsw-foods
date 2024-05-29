@@ -39,7 +39,7 @@ const myFavoriteRestaurantsPage = async () => {
               />
             ))
           ) : (
-            <div className="flex h-[300px] w-full items-center justify-center">
+            <div className="flex h-[550px] w-full items-center justify-center">
               <p className="text-center text-lg">
                 Você ainda não favoritou nenhum restaurante!
               </p>
