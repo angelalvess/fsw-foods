@@ -139,7 +139,7 @@ const Header = () => {
                   <Link href="/my-favorite-restaurants">
                     <Heart size={16} />
                     <span className="block text-sm font-normal">
-                      Resturantes favoritos
+                      Restaurantes favoritos
                     </span>
                   </Link>
                 </Button>
